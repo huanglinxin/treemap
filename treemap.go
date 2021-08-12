@@ -2,7 +2,7 @@ package treemap
 
 import "fmt"
 
-func helloworld(msg string) {
+func Helloworld(msg string) {
 	fmt.Println("helloworld" + msg)
 	return
 }
