@@ -10,11 +10,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a76193d6-2c6a-40c7-b1f6-1936ddad643f" name="Default Changelist" comment="update helloworld">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/treemap.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a76193d6-2c6a-40c7-b1f6-1936ddad643f" name="Default Changelist" comment="update insert show">
+      <change afterPath="$PROJECT_DIR$/map_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/treemap.go" beforeDir="false" afterPath="$PROJECT_DIR$/treemap.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,6 +61,17 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="Test in github.com/huanglinxin/treemap" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="treemap" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/huanglinxin/treemap" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTest\E$" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="treemap" />
       <working_directory value="$PROJECT_DIR$" />
@@ -73,6 +82,11 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.Test in github.com/huanglinxin/treemap" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,9 +105,32 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update helloworld" />
-    <option name="LAST_COMMIT_MESSAGE" value="update helloworld" />
+    <MESSAGE value="update insert show" />
+    <option name="LAST_COMMIT_MESSAGE" value="update insert show" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1663" height="242" key="GridCell.Tab.0.bottom" timestamp="1628755612455">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1663" height="242" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1628755612455" />
+    <state width="1663" height="242" key="GridCell.Tab.0.center" timestamp="1628755612455">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1663" height="242" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1628755612455" />
+    <state width="1663" height="242" key="GridCell.Tab.0.left" timestamp="1628755612455">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1663" height="242" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1628755612455" />
+    <state width="1663" height="242" key="GridCell.Tab.0.right" timestamp="1628755612455">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1663" height="242" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1628755612455" />
+    <state x="516" y="195" width="672" height="678" key="search.everywhere.popup" timestamp="1628751354531">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="516" y="195" width="672" height="678" key="search.everywhere.popup/0.0.1707.920@0.0.1707.920" timestamp="1628751354531" />
   </component>
 </project>

@@ -32,7 +32,7 @@ func maxHeight(left *node, right *node) int {
 	return rightH
 }
 func treeBalance(p *node) bool {
-	abs := p.left.height - p.right.height
+	abs := countBalanceAlpha(p)
 	if abs < 0 {
 		abs = -abs
 	}
@@ -114,13 +114,12 @@ func (this *TreeMap) Insert(key string, value string) {
 	return
 }
 func (this *TreeMap) ShowAll() {
+	if this.root == nil {
+		return
+	}
 	LeftTree := TreeMap{root: this.root.left}
 	rightTree := TreeMap{root: this.root.right}
 	LeftTree.ShowAll()
 	fmt.Println(this.root.key + " : " + this.root.value)
 	rightTree.ShowAll()
-}
-func Helloworld(msg string) {
-	fmt.Println("helloworld" + msg)
-	return
 }
