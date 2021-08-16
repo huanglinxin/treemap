@@ -11,6 +11,7 @@ type node struct {
 	height int
 	key    string
 	value  string
+	parent *node
 }
 type TreeMap struct {
 	root *node
@@ -56,9 +57,21 @@ func countBalanceAlpha(p *node) int {
 	return leftH - rightH
 }
 func rotateLeft(p *node) *node {
+
 	rchild := p.right
 	p.right = rchild.left
 	rchild.left = p
+	//完成旋转
+	rchild.parent = p.parent
+	p.parent = rchild
+	//更新parent指针
+	if rchild.parent != nil && rchild.parent.left == p {
+		rchild.parent.left = rchild
+	}
+	if rchild.parent != nil && rchild.parent.right == p {
+		rchild.parent.right = rchild
+	}
+	//更新parent的child指针
 	p.height = maxHeight(p.left, p.right) + 1
 	rchild.height = maxHeight(rchild.left, rchild.right) + 1
 	return rchild
@@ -67,6 +80,17 @@ func rotateRight(p *node) *node {
 	lchild := p.left
 	p.left = lchild.right
 	lchild.right = p
+	//完成旋转
+	lchild.parent = p.parent
+	p.parent = lchild
+	//更新parent指针
+	if lchild.parent != nil && lchild.parent.left == p {
+		lchild.parent.left = lchild
+	}
+	if lchild.parent != nil && lchild.parent.right == p {
+		lchild.parent.right = lchild
+	}
+	//更新parent的child指针
 	p.height = maxHeight(p.left, p.right) + 1
 	lchild.height = maxHeight(lchild.left, lchild.right) + 1
 	return lchild
@@ -102,16 +126,106 @@ func insertKeyAndValue(this *node, key string, value string) *node {
 	if strings.Compare(key, this.key) < 0 {
 		this.left = insertKeyAndValue(this.left, key, value)
 		this.height = maxHeight(this.left, this.right) + 1
+		this.left.parent = this
 		return rotate(this)
 	}
 	this.right = insertKeyAndValue(this.right, key, value)
 	this.height = maxHeight(this.left, this.right) + 1
+	this.right.parent = this
 	return rotate(this)
 
 }
 func (this *TreeMap) Insert(key string, value string) {
 	this.root = insertKeyAndValue(this.root, key, value)
 	return
+}
+func finMinNode(root *node) *node {
+
+	if root == nil {
+		return nil
+	}
+	for root.left != nil {
+		root = root.left
+	}
+	return root
+}
+func finMaxNode(root *node) *node {
+
+	if root == nil {
+		return nil
+	}
+	for root.right != nil {
+		root = root.right
+	}
+	return root
+}
+func findNode(r *node, key string) *node {
+	//
+	if r == nil {
+		return nil
+	}
+	if strings.Compare(r.key, key) == 0 {
+		return r
+	}
+	if strings.Compare(r.key, key) > 0 {
+		return findNode(r.left, key)
+	}
+	return findNode(r.right, key)
+}
+
+func deleteNode(this *node, key string) *node {
+	this = findNode(this, key)
+	if this == nil {
+		return nil
+	}
+
+	// strings.Compare(key, this.key) == 0
+	if this.left == nil && this.right == nil {
+		if this.parent == nil {
+			return nil //根节点情况
+		}
+		if this.parent.left == this { //叶节点情况
+			this.parent.left = nil
+		} else {
+			this.parent.right = nil
+		}
+		return this.parent //返回被删除节点的父节点
+	}
+	targetNode := finMinNode(this.right)
+	if targetNode != nil {
+		this.key = targetNode.key
+		this.value = targetNode.value
+		return deleteNode(targetNode, targetNode.key)
+	}
+	targetNode = finMaxNode(this.left)
+	this.key = targetNode.key
+	this.value = targetNode.value
+	return deleteNode(targetNode, targetNode.key)
+}
+func adjust_tree(parent *node) *node { //删除节点的后检查操作，检查被节点父节点是否平衡，一直到根节点
+	if parent == nil {
+		return nil
+	}
+	for ; parent.parent != nil; parent = parent.parent {
+		parent.height = maxHeight(parent.left, parent.right) + 1
+		parent = rotate(parent)
+	}
+	return parent
+}
+func (this *TreeMap) GetValue(key string) string {
+	node := findNode(this.root, key)
+	if node == nil {
+		return ""
+	}
+	return node.value
+}
+func (this *TreeMap) Delete(key string) {
+	if findNode(this.root, key) == nil {
+		return
+	}
+	parent := deleteNode(this.root, key)
+	this.root = adjust_tree(parent)
+
 }
 func (this *TreeMap) ShowAll() {
 	if this.root == nil {
